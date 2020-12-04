@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+body
+{
+    background:url('{% static 'Images/review.jpg' %}') fixed no-repeat center;
+  
+}
+{% endblock %}
+{% block body %}
+<br><br>
+<center><b><h2><u>Feedback</u></h2></b></center>
+<br><br>
+<h3><b><marquee style="color:darkorchid">Please spare some time to give your feedback.Your contribution is what makes this business grow !!</marquee></b></h3>
+<div class="container">
+<form action="/review/thanksnote/" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <center><b><u><label for="exampleFormControlTextarea1" style="font-size:30px">Review</label></u></b></center>
+        <textarea name="review" class="form-control" style="background-color:cornsilk; border:brown; border-radius: 5px; " id="exampleFormControlTextarea1" rows="15"></textarea>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="stars" id="exampleRadios1" value="Unmatchable" >
+        <label class="form-check-label" for="exampleRadios1">
+          Unmatchable
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="stars" id="exampleRadios2" value="Excellent" >
+        <label class="form-check-label" for="exampleRadios2">
+          Excellent
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="stars" id="exampleRadios3" value="Good" checked>
+        <label class="form-check-label" for="exampleRadios3">
+          Good
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="stars" id="exampleRadios4" value="Average" >
+        <label class="form-check-label" for="exampleRadios4">
+          Average
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="stars" id="exampleRadios5" value="Bad" >
+        <label class="form-check-label" for="exampleRadios5">
+          Bad
+        </label>
+      </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="stars" id="exampleRadios6" value="Worst" >
+          <label class="form-check-label" for="exampleRadios6">
+            Worst
+          </label>
+        </div>
+      
+      <center><button type="submit" class="btn btn-primary">Send Review</button></center>
+</form>
+</div>
+{% endblock %}

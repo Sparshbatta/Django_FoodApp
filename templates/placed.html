@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+body
+{
+    background:url('{% static 'Images/placed.jpg' %}') center no-repeat fixed;
+    background-size:cover;
+}
+{% endblock %}
+{% block body %}
+<br><br><br><br>
+
+<center>
+  <div class="container" style="background-color:aliceblue">
+<h1>Thank you, {{client.user.username }} for shopping with us!!!</h1>
+<h1> Net bill for this order is {{total_price}}</h1>
+<h1>Delivery Address: {{client.address}}</h1>
+<h1>Order ID: {{order.order_id}}</h1>
+<h1>Your order has been placed and will arrive to you in approx. 30 minutes.</h1>
+</div>
+<br><br>
+  <a href="/user/history/"><button type="submit" class="btn btn-primary" style="margin-left:10px; margin-top:150px;">Check Order Details</button></a>
+
+<h3 style="color:red; margin-top:180px"><marquee><b>Take a screenshot of this page for authentication purposes in case some discrepancy happens...</b></marquee></h3>
+</center>
+{% endblock %}

@@ -1,0 +1,311 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}
+
+Hungry Dragon
+
+{% endblock %}
+
+{% block css %}
+body
+{
+  background:url('{%static 'Images/home.jpg' %}') no-repeat center center fixed;
+}
+.col-md-3
+	{
+	display:inline-block;
+	margin-left:-4px;
+
+	}
+	.col-md-3 img
+	{
+	width:100%;
+	height:255px;
+	}
+
+	body .carousel-indicator li
+	{
+	background-color:blue;
+	}
+
+	.carousel-control-prev,
+	.carousel-control-next
+	{
+
+
+	top:auto;
+	bottom:auto;
+
+	}
+	.carousel-control-prev-icon,
+	.carousel-control-next-icon
+	{
+
+	background-color:blue;
+	top:auto;
+	bottom:auto;
+
+	}
+	body .no-padding
+	{
+	padding-left:0;
+	padding-right:0;
+	}
+
+	body .carousel-indicators
+	{
+	bottom:0;
+	}
+
+	.carousel-indicators .active
+	{
+	background-color:blue;
+	}
+.mt-8
+{
+  margin-top:400px;
+}
+{% endblock %}
+
+{% block body %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert" style="text-align: center;">
+            <strong style="text-align: center; letter-spacing:5px">{{message|title}}</strong>!!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+
+<div class="container" style="margin-top:40px;">
+
+  <u><center><h1 style="margin-top:40px;">Indian Cuisine</h1></center></u>
+	<div id="demo" class="carousel slide my-3" data-ride="carousel">
+
+
+  <ul class="carousel-indicators">
+
+	  {% for i in range_Indian %}
+	  <li data-target="#demo" data-slide-to="{{i}}"></li>
+	  {% endfor %}
+
+  </ul>
+
+  <div class="container carousel-inner no-padding">
+    <div class="carousel-item active">
+
+
+				{% for i in dish_Indian %}
+
+    <div class="col-xs-3 col-sm-3 col-md-3">
+            <div class="card" style="width: 18rem;">
+              <img src="{{i.image.url}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{i.name}}</h5>
+                <p class="card-text">Rs: {{i.price}}</p>
+                <a href="{% if user.is_authenticated %} details/{{i.name}} {% else %} user/login {% endif %}" class="btn btn-primary">View</a>
+              </div>
+            </div>
+			</div>
+
+			{% if forloop.counter|divisibleby:4 and forloop.counter > 0 and  not forloop.last %}
+			</div><div class="carousel-item">
+				{% endif %}
+			{% endfor %}
+
+
+	</div>
+
+	</div>
+
+	</div>
+	<!-- left and right controls for the slides -->
+
+	<a class="carousel-control-prev" href="#demo" data-slide="prev">
+	<span class="carousel-control-prev-icon"></span>
+	</a>
+		<a class="carousel-control-next" href="#demo" data-slide="next">
+	<span class="carousel-control-next-icon"></span>
+	</a>
+
+
+
+  </div>
+
+<br><br>
+
+
+<div class="container" style="margin-top:40px;">
+
+  <u><center><h1 style="margin-top:40px;">Chinese Cuisine</h1></center></u>
+	<div id="demo1" class="carousel slide my-3" data-ride="carousel">
+
+<ul class="carousel-indicators">
+
+	  {% for i in range_Chinese %}
+	  <li data-target="#demo1" data-slide-to="{{i}}"></li>
+	  {% endfor %}
+
+  </ul>
+
+  <div class="container carousel-inner no-padding">
+    <div class="carousel-item active">
+
+
+				{% for i in dish_Chinese %}
+    <div class="col-xs-3 col-sm-3 col-md-3">
+            <div class="card" style="width: 18rem;">
+              <img src="{{i.image.url}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{i.name}}</h5>
+                <p class="card-text">Rs: {{i.price}}</p>
+                <a href="{% if user.is_authenticated %} details/{{i.name}} {% else %} user/login {% endif %}" class="btn btn-primary">View</a>
+              </div>
+            </div>
+			</div>
+
+			{% if forloop.counter|divisibleby:4 and forloop.counter > 0 and  not forloop.last %}
+			</div><div class="carousel-item">
+				{% endif %}
+			{% endfor %}
+
+
+	</div>
+
+	</div>
+
+	</div>
+	<!-- left and right controls for the slides -->
+
+	<a class="carousel-control-prev" href="#demo1" data-slide="prev">
+	<span class="carousel-control-prev-icon"></span>
+	</a>
+		<a class="carousel-control-next" href="#demo1" data-slide="next">
+	<span class="carousel-control-next-icon"></span>
+	</a>
+
+
+
+  </div>
+
+<br><br>
+<div class="container" style="margin-top:40px;">
+
+  <u><center><h1 style="margin-top:40px;">Italian Cuisine</h1></center></u>
+	<div id="demo2" class="carousel slide my-3" data-ride="carousel">
+
+
+ <ul class="carousel-indicators">
+
+	  {% for i in range_Italian %}
+	  <li data-target="#demo2" data-slide-to="{{i}}"></li>
+	  {% endfor %}
+
+  </ul>
+
+  <div class="container carousel-inner no-padding">
+    <div class="carousel-item active">
+
+
+				{% for i in dish_Italian %}
+    <div class="col-xs-3 col-sm-3 col-md-3">
+            <div class="card" style="width: 18rem;">
+              <img src="{{i.image.url}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{i.name}}</h5>
+                <p class="card-text">Rs: {{i.price}}</p>
+                <a href="{% if user.is_authenticated %} details/{{i.name}} {% else %} user/login {% endif %}" class="btn btn-primary">View</a>
+              </div>
+            </div>
+			</div>
+
+			{% if forloop.counter|divisibleby:4 and forloop.counter > 0 and  not forloop.last %}
+			</div><div class="carousel-item">
+				{% endif %}
+			{% endfor %}
+
+
+	</div>
+
+	</div>
+
+	</div>
+	<!-- left and right controls for the slides -->
+
+	<a class="carousel-control-prev" href="#demo2" data-slide="prev">
+	<span class="carousel-control-prev-icon"></span>
+	</a>
+		<a class="carousel-control-next" href="#demo2" data-slide="next">
+	<span class="carousel-control-next-icon"></span>
+	</a>
+
+
+
+  </div>
+
+	<br><br>
+  <div class="container" style="margin-top:40px;">
+
+  <u><center><h1 style="margin-top:40px;">American Cuisine</h1></center></u>
+	<div id="demo3" class="carousel slide my-3" data-ride="carousel">
+
+
+ <ul class="carousel-indicators">
+
+	  {% for i in range_American %}
+	  <li data-target="#demo3" data-slide-to="{{i}}"></li>
+	  {% endfor %}
+
+  </ul>
+
+  <div class="container carousel-inner no-padding">
+    <div class="carousel-item active">
+
+
+				{% for i in dish_American %}
+    <div class="col-xs-3 col-sm-3 col-md-3">
+            <div class="card" style="width: 18rem;">
+              <img src="{{i.image.url}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{i.name}}</h5>
+                <p class="card-text">Rs: {{i.price}}</p>
+                <a href="{% if user.is_authenticated %} details/{{i.name}} {% else %} user/login {% endif %}" class="btn btn-primary">View</a>
+              </div>
+            </div>
+			</div>
+
+			{% if forloop.counter|divisibleby:4 and forloop.counter > 0 and  not forloop.last %}
+			</div><div class="carousel-item">
+				{% endif %}
+			{% endfor %}
+
+
+	</div>
+
+	</div>
+
+	</div>
+	<!-- left and right controls for the slides -->
+
+	<a class="carousel-control-prev" href="#demo3" data-slide="prev">
+	<span class="carousel-control-prev-icon"></span>
+	</a>
+		<a class="carousel-control-next" href="#demo3" data-slide="next">
+	<span class="carousel-control-next-icon"></span>
+	</a>
+
+
+
+  </div>
+
+<br><br>
+
+{% endblock %}
+
+
+

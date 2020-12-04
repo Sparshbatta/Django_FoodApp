@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+body
+{
+  background:url('{%static 'Images/aboutus.jpg' %}') no-repeat center  fixed;
+  background-size:cover;
+}
+textarea:focus 
+{ 
+  outline: none !important;
+  border-color: #719ECE;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+{% endblock %}
+
+
+
+{% block body %}
+<br><br><br>
+
+<center ><b><h1 ><b><u><span  style="background-color: antiquewhite;">ABOUT US</span></u></b></h1></b></center>
+
+<br><br><br>
+
+<center><textarea name=""  style="font-family: serif; font-size: 40px; background-color: rgb(240, 230, 172) " cols=50 rows=6 id="demo" ></textarea></center>
+
+<br><br><br>
+<center ><b><h1 ><b><u><span  style="background-color: rgb(205, 224, 168);">PRIME</span></u></b></h1></b></center>
+
+<br><br><br>
+
+<center><textarea name=""  style=" font-family: serif; font-size: 40px; background-color: rgb(199, 242, 245) " cols=50 rows=6 id="demo2" ></textarea></center>
+
+<script>
+  
+  var i = 0;
+  var j = 0;
+  var txt = 'At Hungry Dragon we cater to your hunger needs in the best possible manner!!\nWe guarantee you a nonpareil service and will do our best to ensure the same.\n'; 
+  txt=txt+'With your contribution we will make this place "A HEAVEN FOR FOODIES" !!'
+
+  var txt2= 'In prime membership, you will get a discount of 10 percent on each and every item you order no matter of which type.'
+  txt2=txt2+'\nThe requisite for this membership is only Rs. 300 to be paid monthly.\n'
+  txt2=txt2+"Cancel it anytime but beware already paid amount will not be refunded."
+  var speed = 50; 
+  function typeWriter()
+{
+  
+  if (i < txt.length)
+   {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+function typeWriter2()
+{
+  
+  if (j < txt2.length)
+   {
+    document.getElementById("demo2").innerHTML += txt2.charAt(j);
+    j++;
+    setTimeout(typeWriter2, speed);
+  }
+}
+  window.onload = function type()
+  
+  {
+
+typeWriter();
+typeWriter2();
+
+  };
+</script>
+<div class="container" style="margin-left:690px; margin-top:100px;">
+<b style="font-size: 20px;">Have Queries? </b>
+<u>
+<a href="mailto:SparshGeetansh@gmail.com" style="color:rgb(102, 33, 6);font-size:20px; background-color:aliceblue">Send email</a>
+</u>
+</div>
+{% endblock %}

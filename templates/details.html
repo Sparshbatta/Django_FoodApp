@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+body
+{
+  background:url('{% static 'Images/orderpage.jpg' %}') fixed  no-repeat;
+}
+{% endblock %}
+{% block body %}
+<br>
+
+<u><center><b><h1>Order Details</h1></b></center></u>
+  <br>
+  <center><img src="{{data.image.url}}" width="400px" height="400px" ></center>
+<div class="container"  style="margin-top: 100px">
+  <div class="row" style="padding:20px; background-color:aliceblue; color: red">
+   <div class="col-sm" style="border-right:0.25px solid black ">
+    	<center> Name</center>
+    </div>
+    <div class="col-sm" style="color:green">
+     {{data.name}}
+    </div>
+  </div>
+<hr>
+  <div class="row" style="padding:20px; background-color:aliceblue ; color: red">
+    <div class="col-sm" style="border-right:0.25px solid black">
+    	<center>Description</center>
+    </div>
+    <div class="col-sm" style="color:green">
+     {{data.desc}}
+    </div>
+  </div>
+  <hr>
+  <div class="row" style="padding:20px; background-color:aliceblue; color: red">
+    <div class="col-sm" style="border-right:0.25px solid black">
+    	<center>Original Price</center>
+    </div>
+    <div class="col-sm" style="color:green">
+     {{data.price}}
+    </div>
+  </div>
+  <hr>
+  {% if client.prime %}
+  <div class="row" style="padding:20px; background-color:aliceblue; color: red">
+    <div class="col-sm" style="border-right:0.25px solid black">
+    	<center>Cutoff Price</center>
+    </div>
+    <div class="col-sm" style="color:green">
+     {{price}}
+    </div>
+  </div>
+  {% endif %}
+  <br>
+  <form action="/order/{{data.name}}" method="POST" >
+
+    {% csrf_token %}
+
+    <center><input type="submit" class="btn btn-primary" value="Purchase" style="background-color:blue"></center>
+  </form>
+
+</div>
+
+{% endblock %}

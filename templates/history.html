@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+body
+{
+    background:url('{% static 'Images/history2.jpeg' %}') center center no-repeat fixed;
+}
+{% endblock %}
+{% block body %}
+
+<br><br>
+<b><h1><u><center>Your Order Details</center></u></h1></b>
+<br><br><br>
+
+<div class="container">
+<ul class="list-group" style="margin-left:100px; margin-right:180px ">
+    <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color:rgb(53, 186, 219)">
+        <u><b>Order_ID</b></u> <u><b>Order Name</b></u> <u><b>Quantity</b></u>
+    </li>
+    {% for i in order %}
+    <li class="list-group-item d-flex justify-content-between align-items-center" style="background-color:rgb(171, 241, 209)">
+     <b><center>{{i.order_id}}</center></b> <a href="/user/order_details/{{i.order_id}}/" style="color:rgb(231, 91, 35)"><u><b>{{i.cuisine.name}}</b></u></a> 
+      <span class="badge badge-primary badge-pill">{{i.quantity}}</span>
+    </li>
+    {% endfor%}
+   <br>
+
+    <a href="{% if order %}/order/order_history/deleteall{% else %}/user/history/{% endif %}" title="will only delete orders record, pending orders will still be processed""><button type="submit" class="btn btn-primary" style="margin-left:330px;">Delete all orders</button></a>
+
+</div>
+
+{% endblock %}

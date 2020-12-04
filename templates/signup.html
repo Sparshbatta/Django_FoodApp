@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+label
+{
+font-weight:bold;
+}
+body
+{
+background:url('{% static 'Images/account.jpg' %}') no-repeat center center fixed;
+background-size:cover;
+}
+
+{% endblock %}
+{% block body %}
+{% if  messages %}
+<div class="alert alert-danger alert-dismissible fade show" style="height:50px;"  role="alert">
+    {% for message in messages %}
+   
+    <strong>Warning!!</strong> {{ message }}
+
+{% endfor %}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+   
+{% endif %}
+
+
+<div class="container">
+    <form style="margin-left:40px; margin-top:100px; padding:10px ;background-color:beige;" action='/user/signup/' enctype='multipart/form-data' method='post'>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="form-control" required maxlength=13 id="username">
+            <small id="username"  style="color:black">
+              
+                Should not be more than 13 characters long.
+            </small>
+          </div>
+         
+          <div class="form-group">
+            <label for="inputEmail4">Email</label>
+            <input type="email" name="email" class="form-control" required id="inputEmail4">
+          </div>
+        
+           
+            <div class="form-group">
+              <label for="inputPassword4">Password</label>
+              <input type="password" name="password" class="form-control" maxlength="20" minlength="4" required id="inputPassword4">
+              <small id="inputPassword4"  style="color:black">
+              
+                Your password must be 8-20 characters long.
+              </small>
+              <br>
+              <script>
+                function myFunction() {
+                    var x = document.getElementById("inputPassword4");
+                    if (x.type === "password") {
+                      x.type = "text";
+                    } else {
+                      x.type = "password";
+                    }
+                  }
+              </script>
+              <script>
+                function myFunction2() {
+                    var x = document.getElementById("inputPassword5");
+                    if (x.type === "password") {
+                      x.type = "text";
+                    } else {
+                      x.type = "password";
+                    }
+                  }
+              </script>
+              <input type="checkbox" onclick="myFunction()">Show Password
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword5">Re-Type Password</label>
+                <input type="password" name="repassword" class="form-control" maxlength="20" minlength="4" required id="inputPassword5">
+            
+          
+            <input type="checkbox" onclick="myFunction2()">Show Password
+              </div>
+        
+          <div class="form-group">
+            <label for="inputAddress">Phone Number</label>
+            <input type="text" pattern="[0-9]{10,13}"  title="Please enter a valid phone number" maxlength=12 name="phone" class="form-control" required id="inputAddress" placeholder="Enter your phone number">
+          </div>
+          <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input type="text" name="address" class="form-control" id="inputAddress" required placeholder="1234 Main St">
+          </div>
+         
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">City</label>
+              <input type="text" name="city" class="form-control" required id="inputCity">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputState">State</label>
+              <select id="inputState" name="state" required class="form-control">
+                <option selected>Chandigarh</option>
+                <option>
+                  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                  <option value="Assam">Assam</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Chandigarh">Chandigarh</option>
+                  <option value="Chhattisgarh">Chhattisgarh</option>
+                  <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                  <option value="Daman and Diu">Daman and Diu</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Lakshadweep">Lakshadweep</option>
+                  <option value="Puducherry">Puducherry</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                  <option value="Jharkhand">Jharkhand</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Manipur">Manipur</option>
+                  <option value="Meghalaya">Meghalaya</option>
+                  <option value="Mizoram">Mizoram</option>
+                  <option value="Nagaland">Nagaland</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Sikkim">Sikkim</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Tripura">Tripura</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="West Bengal">West Bengal</option>
+                </option>
+              </select>
+            </div>
+           
+          </div>
+          <div class="form-group ml-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="prime" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Try Prime Membership?
+              </label>
+            </div>
+          </div>
+          <div class="form-group" style="margin-left:180px; margin-right:180px;">
+            <div class="custom-file">
+              <input type="file" name="image" required class="custom-file-input" id="customFile">
+              <label class="custom-file-label" for="customFile">Choose Your Profile Image</label>
+            </div>
+          </div>
+          <center><button type="submit" class="btn btn-primary">Sign Up</button></center>
+      </form>
+    </div>
+
+    <br><br>
+    <a href="/user/login/" style="margin-left: 700px; color:black ;background-color:aliceblue">Already have an account? Login here...</a>
+  
+
+{% endblock %}

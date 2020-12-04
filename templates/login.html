@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+body
+{
+    background:url({% static 'Images/login.jpg'%}) center center no-repeat fixed;
+}
+    .form-group
+    {
+        width:400px;
+    }
+    
+
+{% endblock %}
+{% block body %}
+{% if messages %}
+<div class="alert alert-danger alert-dismissible fade show" style="height:50px;"  role="alert">
+    {% for message in messages %}
+   
+     {{ message }}
+      
+{% endfor %}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endif %}
+   <div class="container">
+<form action="/user/login/" method="post" style="margin-top: 180px; margin-left: 320px; width:60%; height: 80%;">
+    {% csrf_token %}
+  
+   
+    <div class="form-group">
+      <b><center><label for="username">Username</label></center></b>
+      <input class="form-control" type="text"id="username" name="username" required placeholder="Enter username">
+    </div>
+        <br>
+   <div class="form-group">
+    <b><center> <label for="password">Password</label></center></b>
+        <input class="form-control" id="password" type="password" name="password" required placeholder="Enter password">
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-left:160px">Log in</button>
+      </div>
+   <br><br>
+      <a href="/user/signup/" style="margin-left: 680px">No Account? Create one here...</a>
+    
+ 
+
+
+{% endblock %}
